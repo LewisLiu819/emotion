@@ -37089,25 +37089,25 @@
 /***/ })
 /******/ ]);
 //# sourceMappingURL=bundle.js.map </script></head><body>
-        <div class="lime top_div" id="top_divQAAWOKUE9JMD0Q2"></div>
+        <div class="lime top_div" id="top_divVSPDMMKFCR2SNQ3"></div>
         
         <script>
-        var top_div = d3.select('#top_divQAAWOKUE9JMD0Q2').classed('lime top_div', true);
+        var top_div = d3.select('#top_divVSPDMMKFCR2SNQ3').classed('lime top_div', true);
         
             var pp_div = top_div.append('div')
                                 .classed('lime predict_proba', true);
             var pp_svg = pp_div.append('svg').style('width', '100%');
-            var pp = new lime.PredictProba(pp_svg, ["Negative", "Positive"], [0.0049937572330236435, 0.9950062036514282]);
+            var pp = new lime.PredictProba(pp_svg, ["Negative", "Positive"], [0.0008294998551718891, 0.9991705417633057]);
             
         
         var exp_div;
             var exp = new lime.Explanation(["Negative", "Positive"]);
         
                 exp_div = top_div.append('div').classed('lime explanation', true);
-                exp.show([["great", 0.3189564265305462], ["happy", 0.24140503785195042], ["for", -0.08015828835596966], ["yr", 0.06427856604409246], ["had", -0.06013149241863946], ["Tysm", -0.05595407001825368]], 1, exp_div);
+                exp.show([["afternoon", 0.3519226653472875], ["lovely", 0.34499411278413883], ["a", 0.0936477206218308], ["what", 0.06168221533507195]], 1, exp_div);
                 
         var raw_div = top_div.append('div');
-            exp.show_raw_text([["great", 29, 0.3189564265305462], ["happy", 7, 0.24140503785195042], ["for", 46, -0.08015828835596966], ["yr", 50, 0.06427856604409246], ["had", 23, -0.06013149241863946], ["Tysm", 41, -0.05595407001825368]], 1, "i'm so happy that yall had a great week! Tysm for yr response!!", raw_div, true);
+            exp.show_raw_text([["afternoon", 14, 0.3519226653472875], ["lovely", 7, 0.34499411278413883], ["a", 5, 0.0936477206218308], ["what", 0, 0.06168221533507195]], 1, "what a lovely afternoon!", raw_div, true);
             
         </script>
         </body></html>

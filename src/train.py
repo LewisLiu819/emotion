@@ -24,36 +24,36 @@ print("Data loaded")
 kf = KFold(n_splits=5, shuffle=True, random_state=42)
 fold = 1
 
-for train_index, val_index in kf.split(input_ids):
-    print(f"Training Fold {fold}...")
+# for train_index, val_index in kf.split(input_ids):
+#     print(f"Training Fold {fold}...")
 
-    # Data Preparation
-    train_inputs, validation_inputs = tf.gather(input_ids, train_index), tf.gather(input_ids, val_index)
-    train_masks, validation_masks = tf.gather(attention_masks, train_index), tf.gather(attention_masks, val_index)
-    train_labels, validation_labels = tf.gather(labels, train_index), tf.gather(labels, val_index)
+#     # Data Preparation
+#     train_inputs, validation_inputs = tf.gather(input_ids, train_index), tf.gather(input_ids, val_index)
+#     train_masks, validation_masks = tf.gather(attention_masks, train_index), tf.gather(attention_masks, val_index)
+#     train_labels, validation_labels = tf.gather(labels, train_index), tf.gather(labels, val_index)
 
-    # Load Model
-    if fold == 1:
-        model = TFBertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=2)
+#     # Load Model
+#     if fold == 1:
+#         model = TFBertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=2)
 
-    # Compile Model
-    optimizer = tf.keras.optimizers.Adam(learning_rate=2e-5, epsilon=1e-8)
-    model.compile(optimizer=optimizer, loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True), metrics=['accuracy'])
+#     # Compile Model
+#     optimizer = tf.keras.optimizers.Adam(learning_rate=2e-5, epsilon=1e-8)
+#     model.compile(optimizer=optimizer, loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True), metrics=['accuracy'])
 
-    # Train
-    history = model.fit(
-        [train_inputs, train_masks],
-        train_labels,
-        batch_size=16,
-        epochs=4,
-        validation_data=([validation_inputs, validation_masks], validation_labels)
-    )
+#     # Train
+#     history = model.fit(
+#         [train_inputs, train_masks],
+#         train_labels,
+#         batch_size=16,
+#         epochs=4,
+#         validation_data=([validation_inputs, validation_masks], validation_labels)
+#     )
 
-    # Free Resources
-    tf.keras.backend.clear_session()
-    gc.collect()
+#     # Free Resources
+#     tf.keras.backend.clear_session()
+#     gc.collect()
 
-    fold += 1
+#     fold += 1
 
 # Final Training on All Data
 model = TFBertForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=2)

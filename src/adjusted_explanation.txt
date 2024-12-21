@@ -1,0 +1,6 @@
+Feature: perfect, Adjusted Weight: 6.749451692680783
+Feature: cozy, Adjusted Weight: 6.732716494468695
+Feature: lovely, Adjusted Weight: 6.545004465855053
+Feature: delicious, Adjusted Weight: 6.539222863599836
+Feature: afternoon, Adjusted Weight: 6.217621532604144
+Feature: amazing, Adjusted Weight: 5.984789059557878

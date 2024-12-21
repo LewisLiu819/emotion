@@ -86,3 +86,48 @@ conf_matrix_df = pd.DataFrame(conf_matrix,
                               columns=['Predicted Positive', 'Predicted Negative'])
 conf_matrix_df.to_csv("confusion_matrix.csv", index=True)
 print(f"Confusion matrix saved to 'confusion_matrix.csv'.")
+
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+plt.figure(figsize=(8, 6))
+plt.imshow(conf_matrix, interpolation='nearest', cmap=plt.cm.Blues)
+plt.title('Confusion Matrix', fontsize=16)
+plt.colorbar()
+tick_marks = np.arange(len(['Positive', 'Negative']))
+plt.xticks(tick_marks, ['Positive', 'Negative'], rotation=45, fontsize=12)
+plt.yticks(tick_marks, ['Positive', 'Negative'], fontsize=12)
+
+for i in range(conf_matrix.shape[0]):
+    for j in range(conf_matrix.shape[1]):
+        plt.text(j, i, format(conf_matrix[i, j], 'd'),
+                 horizontalalignment="center",
+                 color="white" if conf_matrix[i, j] > conf_matrix.max() / 2 else "black")
+
+plt.ylabel('True Label', fontsize=14)
+plt.xlabel('Predicted Label', fontsize=14)
+plt.tight_layout()
+plt.savefig("confusion_matrix.png")
+print("Confusion matrix visualization saved as 'confusion_matrix.png'")
+plt.show()
+
+metrics = ['Positive', 'Negative']
+x = np.arange(len(metrics)) 
+width = 0.2 
+
+plt.figure(figsize=(10, 6))
+plt.bar(x - width, [positive_f1, negative_f1], width, label='F1 Score')
+plt.bar(x, [positive_precision, negative_precision], width, label='Precision')
+plt.bar(x + width, [positive_recall, negative_recall], width, label='Recall')
+
+plt.xlabel('Classes', fontsize=14)
+plt.ylabel('Scores', fontsize=14)
+plt.title('Evaluation Metrics by Class', fontsize=16)
+plt.xticks(x, metrics, fontsize=12)
+plt.legend(loc='best', fontsize=12)
+plt.tight_layout()
+plt.savefig("evaluation_metrics.png")
+print("Evaluation metrics visualization saved as 'evaluation_metrics.png'")
+plt.show()
